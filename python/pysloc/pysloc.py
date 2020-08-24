@@ -2,7 +2,7 @@
 License
 ---------
 :copyright: Copyright (c) 2020 Jeremiah Ikosin (@ziord)
-:license: BSD 3 Clause, see LICENSE for more details
+:license: BSD 3-Clause, see LICENSE for more details
 
 
 Description
