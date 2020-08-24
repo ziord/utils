@@ -20,19 +20,6 @@ blank lines are not counted, be it in comments or regular lines
 import sys
 from switches.switch import switch
 
-mapping = {
-    'python':  {
-        'single-line-comment': '#',
-        'multi-line-comment':   ['"""', "'''"],
-    }
-}
-
-MULTILINE_COMMENT_START = False
-MULTILINE_COMMENT_END = False
-
-SINGLE_LINE_COMMENT = False
-MULTILINE_COMMENT_MARKER = 0
-
 
 def read_file__lazy(file_name):
     return (line.strip() for line in open(file_name))
@@ -97,8 +84,24 @@ def single_line_comment():
 
 def linecount():
     global line_count, slc_count, mlc_count, multiline_comments
+    global MULTILINE_COMMENT_START, MULTILINE_COMMENT_END
+    global SINGLE_LINE_COMMENT, MULTILINE_COMMENT_MARKER
+    global mapping
+
     line_count, slc_count, mlc_count = 0, 0, 0
     multiline_comments = {}
+    MULTILINE_COMMENT_START = False
+    MULTILINE_COMMENT_END = False
+
+    SINGLE_LINE_COMMENT = False
+    MULTILINE_COMMENT_MARKER = 0
+
+    mapping = {
+        'python': {
+            'single-line-comment': '#',
+            'multi-line-comment': ['"""', "'''"],
+        }
+    }
 
 
 def inc_line_count():
